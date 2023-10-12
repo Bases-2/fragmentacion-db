@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: global
     volumes:
       - data_global:/var/lib/postgresql/data
-      - './scripts:/docker-entrypoint-initdb.d/:ro'
+      - './particular/:/docker-entrypoint-initdb.d/:ro'
 
   guanajuato:
     image: postgres:15-alpine
@@ -21,7 +21,7 @@ services:
       POSTGRES_USER: guanajuato
     volumes:
       - data_guanajuato:/var/lib/postgresql/data
-      - './scripts:/docker-entrypoint-initdb.d/:ro'
+      - './general/:/docker-entrypoint-initdb.d/:ro'
   
   monterrey:
     image: postgres:15-alpine
@@ -32,7 +32,7 @@ services:
       POSTGRES_USER: monterrey
     volumes:
       - data_monterrey:/var/lib/postgresql/data
-      - './scripts:/docker-entrypoint-initdb.d/:ro'
+      - './general/:/docker-entrypoint-initdb.d/:ro'
 
   cdmx:
     image: postgres:15-alpine
@@ -43,7 +43,7 @@ services:
       POSTGRES_USER: cdmx
     volumes:
       - data_cdmx:/var/lib/postgresql/data
-      - './scripts:/docker-entrypoint-initdb.d/:ro'
+      - './general/:/docker-entrypoint-initdb.d/:ro'
 
 volumes:
   data_global:

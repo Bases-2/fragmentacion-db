@@ -1,0 +1,4 @@
+dblink_exec(
+        FORMAT('host=%s port=%s dbname=%s user=%s password=%s', 'monterrey', 5432, 'monterrey', 'monterrey', 'pass'),
+        FORMAT('INSERT INTO public.departamento (id_dep, nombre, ciudad) VALUES(''%s'', ''%s'', ''%s'')', 'D1', 'Recursos Inhumanos', 'MTR')
+    );
