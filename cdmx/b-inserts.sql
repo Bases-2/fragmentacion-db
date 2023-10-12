@@ -1,0 +1,1 @@
+INSERT INTO public.servidor (ciudad, host, puerto, usuario, contrasena) VALUES('CDM', 'cdmx', 5432, 'cdmx', 'pass');
