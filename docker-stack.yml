@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  global:
+    image: postgres:15-alpine
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: global
+    volumes:
+      - data_global:/var/lib/postgresql/data
+      - './scripts:/docker-entrypoint-initdb.d/:ro'
+
+  guanajuato:
+    image: postgres:15-alpine
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: guanajuato
+    volumes:
+      - data_guanajuato:/var/lib/postgresql/data
+      - './scripts:/docker-entrypoint-initdb.d/:ro'
+  
+  monterrey:
+    image: postgres:15-alpine
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: monterrey
+    volumes:
+      - data_monterrey:/var/lib/postgresql/data
+      - './scripts:/docker-entrypoint-initdb.d/:ro'
+
+  cdmx:
+    image: postgres:15-alpine
+    ports:
+      - 5436:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: cdmx
+    volumes:
+      - data_cdmx:/var/lib/postgresql/data
+      - './scripts:/docker-entrypoint-initdb.d/:ro'
+
+volumes:
+  data_global:
+  data_guanajuato:
+  data_monterrey:
+  data_cdmx:
