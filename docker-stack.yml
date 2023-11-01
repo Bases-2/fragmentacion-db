@@ -10,43 +10,46 @@ services:
       POSTGRES_USER: global
     volumes:
       - data_global:/var/lib/postgresql/data
-      - './particular/:/docker-entrypoint-initdb.d/:ro'
+      - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
 
-  guanajuato:
+  sistemas:
     image: postgres:15-alpine
     ports:
       - 5434:5432
     environment:
       POSTGRES_PASSWORD: pass
-      POSTGRES_USER: guanajuato
+      POSTGRES_USER: sistemas
     volumes:
-      - data_guanajuato:/var/lib/postgresql/data
-      - './guanajuato/:/docker-entrypoint-initdb.d/:ro'
+      - data_sistemas:/var/lib/postgresql/data
+      - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
+      - './sistemas:/docker-entrypoint-initdb.d/2.sql:ro'
   
-  monterrey:
+  catastral:
     image: postgres:15-alpine
     ports:
       - 5435:5432
     environment:
       POSTGRES_PASSWORD: pass
-      POSTGRES_USER: monterrey
+      POSTGRES_USER: catastral
     volumes:
-      - data_monterrey:/var/lib/postgresql/data
-      - './monterrey/:/docker-entrypoint-initdb.d/:ro'
+      - data_catastral:/var/lib/postgresql/data
+      - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
+      - './catastral/:/docker-entrypoint-initdb.d/2.sql:ro'
 
-  cdmx:
+  electronica:
     image: postgres:15-alpine
     ports:
       - 5436:5432
     environment:
       POSTGRES_PASSWORD: pass
-      POSTGRES_USER: cdmx
+      POSTGRES_USER: electronica
     volumes:
-      - data_cdmx:/var/lib/postgresql/data
-      - './cdmx/:/docker-entrypoint-initdb.d/:ro'
+      - data_electronica:/var/lib/postgresql/data
+      - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
+      - './ingenieria:/docker-entrypoint-initdb.d/2.sql:ro'
 
 volumes:
   data_global:
-  data_guanajuato:
-  data_monterrey:
-  data_cdmx:
+  data_sistemas:
+  data_catastral:
+  data_electronica:

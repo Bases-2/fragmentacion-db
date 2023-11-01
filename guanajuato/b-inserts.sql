@@ -1,1 +1,0 @@
-INSERT INTO public.servidor (ciudad, host, puerto, usuario, contrasena) VALUES('GUA', 'guanajuato', 5432, 'guanajuato', 'pass');
