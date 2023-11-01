@@ -1,0 +1,1 @@
+INSERT INTO public.servidor (serv_id, host, puerto, usuario, contrasena) VALUES('CAT', 'catastral', 5432, 'catastral', 'pass');

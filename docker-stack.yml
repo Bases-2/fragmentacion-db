@@ -11,6 +11,10 @@ services:
     volumes:
       - data_global:/var/lib/postgresql/data
       - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
+      - './ingenieria/b-inserts.sql:/docker-entrypoint-initdb.d/2.sql:ro'
+      - './ingenieria/c-triggers.sql:/docker-entrypoint-initdb.d/3.sql:ro'
+    networks:
+      - default
 
   sistemas:
     image: postgres:15-alpine
@@ -22,7 +26,9 @@ services:
     volumes:
       - data_sistemas:/var/lib/postgresql/data
       - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
-      - './sistemas:/docker-entrypoint-initdb.d/2.sql:ro'
+      - './sistemas/b-inserts.sql:/docker-entrypoint-initdb.d/2.sql:ro'
+    networks:
+      - default
   
   catastral:
     image: postgres:15-alpine
@@ -34,7 +40,9 @@ services:
     volumes:
       - data_catastral:/var/lib/postgresql/data
       - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
-      - './catastral/:/docker-entrypoint-initdb.d/2.sql:ro'
+      - './catastral/b-inserts.sql:/docker-entrypoint-initdb.d/2.sql:ro'
+    networks:
+      - default
 
   electronica:
     image: postgres:15-alpine
@@ -46,7 +54,9 @@ services:
     volumes:
       - data_electronica:/var/lib/postgresql/data
       - './a-creation.sql:/docker-entrypoint-initdb.d/1.sql:ro'
-      - './ingenieria:/docker-entrypoint-initdb.d/2.sql:ro'
+      - './catastral/b-inserts.sql:/docker-entrypoint-initdb.d/2.sql:ro'
+    networks:
+      - default
 
 volumes:
   data_global:
